@@ -1,3 +1,4 @@
+import { Reservation } from 'src/reservations/entities/reservation.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -5,6 +6,7 @@ import {
   Timestamp,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity('users')
@@ -35,4 +37,7 @@ export class User {
 
   @UpdateDateColumn({ comment: '最終更新日時' })
   readonly updated_at?: Timestamp;
+
+  @OneToMany(() => Reservation, (reservation) => reservation.user)
+  reservations: Reservation[];
 }
