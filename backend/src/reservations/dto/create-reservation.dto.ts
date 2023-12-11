@@ -1,6 +1,9 @@
-import { IsBoolean, IsDate } from 'class-validator';
+import { IsBoolean, IsDate, IsNumber } from 'class-validator';
 
 export class CreateReservationDto {
+  @IsNumber()
+  readonly user_id: number;
+
   @IsDate()
   readonly meal_date: Date;
 
